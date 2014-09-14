@@ -1,0 +1,41 @@
+# Object files
+*.o
+*.ko
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Eagle
+*.s#*
+*.b#*
+*.l#*
+
+# LTSpice
+*.log
+*.raw
+
+# GHDL
+work-obj93.cf
+
+# Kate temp files
+*~
+
+# Quartus temp files
+*_auto_stripped.stp
+*.db_info
+*.ipinfo
+*.sld_design_entry.sci
+*.done
+*.bak
