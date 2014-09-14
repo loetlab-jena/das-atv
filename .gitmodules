@@ -1,0 +1,3 @@
+[submodule "util/edid/edid-rw"]
+	path = util/edid/edid-rw
+	url = git://github.com/bulletmark/edid-rw

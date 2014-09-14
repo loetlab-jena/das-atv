@@ -8,4 +8,4 @@ Structure
 ==========
   * hw/ contains all hardware description files (every board gets its own folder), schematics and layouts can be found here
   * hdl/ contains all FPGA related software
-  * sw/ contains all software not used on the FPGA, be it control software, utilities ...
+  * util/ contains all utilities used with the hardware
