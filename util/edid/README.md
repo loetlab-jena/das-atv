@@ -13,6 +13,7 @@ You can flash the EEPROM over HDMI. You have to connect the board via HDMI and t
   - find the i2c bus of your HDMI port:
     *sudo i2cdetect -y X* with X the number of the i2c bus where the output looks only like this when the board is connected(connect/unconnect the board to check it)
 
+```
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
@@ -22,6 +23,7 @@ You can flash the EEPROM over HDMI. You have to connect the board via HDMI and t
 50: 50 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 70: -- -- -- -- -- -- -- --
+```
 
   - generate binary file with edid.m(matlab or octave) - please change the serial number for every new device
 
@@ -32,6 +34,7 @@ You can flash the EEPROM over HDMI. You have to connect the board via HDMI and t
     *sudo edid-rw/edid-rw X | edid-decode* with X as your i2c bus
     the last lines should look like this:
 
+```
 Manufacturer: DAS Model 25 Serial Number 1
 Made week 37 of 2014
 EDID version: 1.3
@@ -50,3 +53,4 @@ Monitor name: DAS DB0HL
 Monitor ranges: 50-50HZ vertical, 15-32kHz horizontal, max dotclock 30MHz
 ASCII string: DL3YC
 Checksum: 0x66
+```
