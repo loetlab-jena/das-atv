@@ -3,10 +3,8 @@ JedecChain;
 	FileRevision(JESD32A);
 	DefaultMfr(6E);
 
-	P ActionCode(Ign)
-		Device PartName(EP4CE22) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(EP4CE22F17) Path("/home/yc/projekte/atv/hdl/hdmi/analyzer/output_files/") File("hdmi_analyzer.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE22F17) Path("/home/yc/projekte/das-atv/hdl/syn/output_files/") File("hdmi2pal.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

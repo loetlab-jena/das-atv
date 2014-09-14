@@ -40,6 +40,13 @@ entity hdmi2pal is
 end entity;
 
 architecture rtl of hdmi2pal is
+	function to_fcw(frequency : real) return positive is
+		constant sample_rate : real := 50_000_000.0;
+		constant bit_width : integer := 16;
+	begin
+		return integer(frequency / sample_rate * real(2**bit_width));
+	end function;
+
 	signal sync			: std_logic;
 	signal burst		: std_logic;
 	signal hdmi_freq	: std_logic_vector(10 downto 0);
@@ -51,6 +58,8 @@ architecture rtl of hdmi2pal is
 	signal clk108		: std_logic;
 	signal clk108_locked: std_logic;
 	signal clksel		: std_logic;
+
+	signal sin_out		: signed(11 downto 0);
 begin
 
 	pll1 : entity work.pll
@@ -62,7 +71,7 @@ begin
 		locked		=> clk108_locked
 	);
 
-	DAC_CLK_I <= clk108;
+	DAC_CLK_I <= CLK50;
 
 	pll2 : entity work.pll2
 	port map(
@@ -104,6 +113,22 @@ begin
 		sync	=> sync,
 		burst	=> burst
 	);
+
+	sin_gen : entity work.nco
+	generic map(
+		A	=> 12,
+		F	=> 16,
+		P	=> 16,
+		N	=> 14,
+		FCW	=> to_fcw(1_000_000.0)
+	)
+	port map(
+		clk	=> CLK50,
+		sin	=> sin_out,
+		cos	=> open
+	);
+
+	DAC_D <= std_logic_vector(b"1000_0000_0000" - sin_out);
 
 	LED(7) <= sync;
 	LED(6) <= HDMI_DE;
